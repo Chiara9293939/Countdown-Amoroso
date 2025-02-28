@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <style>
+        /* Importa il font Ultras Liberi */
+        @font-face {
+            font-family: 'Ultras Liberi';
+            src: url('ultrasliberi.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Imposta lo sfondo rosso e lo stile del testo */
+        body {
+            background-color: red;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #countdown {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        /* Applica il font personalizzato al titolo */
+        h1 {
+            font-family: 'Ultras Liberi', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown fino al 5 marzo 2025 alle 17:00!</h1>
+    <div id="countdown"></div>
+
+    <script>
+        // Data di destinazione del countdown
+        var countDownDate = new Date("Mar 5, 2025 17:00:00").getTime();
+
+        // Aggiorna il countdown ogni secondo
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "g " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Quando il countdown finisce
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Il countdown è terminato!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
